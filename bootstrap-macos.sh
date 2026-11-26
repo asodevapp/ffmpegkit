@@ -1,4 +1,6 @@
 #!/bin/sh
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2026 ASO.dev
 # Installs the tools build.sh needs on a Mac into $FFKIT_HOME/tools, without Homebrew or sudo: CMake, Ninja and Meson
 # in a Python venv, and NASM, pkgconf and Bash 5 (FFmpegKit's post-build script needs Bash 4+) built from source.
 # Xcode (clang, lipo, codesign, xcodebuild) must already be installed.

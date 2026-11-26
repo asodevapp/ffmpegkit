@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2026 ASO.dev
 # Builds the desktop FFmpegKit library ASO.dev ships: FFmpeg cut down to what the app calls, wrapped by FFmpegKit
 # (ffmpeg-kit-builders v0.10.5). README.md lists the components and why each one is there.
 #

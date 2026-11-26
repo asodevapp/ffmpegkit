@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2026 ASO.dev
 # Checks an archive from build.sh before it is published: the FFmpeg configuration compiled into the library has no
 # GPL or non-free code and no external library beyond the allowed ones, the removed libraries left no code behind, and
 # the encoders the app asks for are there.

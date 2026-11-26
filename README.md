@@ -35,9 +35,12 @@ machine.
 | SDL2, zlib | Zlib |
 | JsonCpp | MIT |
 | MinGW-w64 runtime, winpthreads (Windows) | MinGW-w64 runtime licenses (permissive) |
+| GCC runtime (Windows: libstdc++, libgcc, libssp, linked statically) | GPL-3.0 with the GCC Runtime Library Exception, which puts no obligations on the built library |
 
-Every archive carries these license texts and `SOURCES.lock` in `licenses/`. The scripts in this repository are
-under the MIT license (`LICENSE`).
+Every archive carries the license texts of FFmpeg, FFmpegKit and the libraries built from `sources.lock`, and
+`SOURCES.lock` itself, in `licenses/`. The scripts in this repository are
+licensed under the GNU LGPL, version 3 or (at your option) any later version: `LICENSE`, which supplements the
+GNU GPL version 3 in `COPYING`.
 
 ## Sources
 

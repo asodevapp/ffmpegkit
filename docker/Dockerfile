@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2026 ASO.dev
 # Linux and Windows build environment for build.sh. Ubuntu 22.04 is the image the app's Linux build uses, so
 # libffmpegkit.so needs no newer glibc than the app; Windows uses its mingw-w64 GCC.
 FROM ubuntu:22.04

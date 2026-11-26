@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: LGPL-3.0-or-later
+# Copyright (c) 2026 ASO.dev
 # Publishes verified build.sh archives as the GitHub release FFKIT_RELEASE (release.env) of this repository, together
 # with the corresponding source: this recipe and every source tree locked in sources.lock. Prints the SHA-256 of each
 # archive for the app that pins them.

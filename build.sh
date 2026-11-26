@@ -418,6 +418,30 @@ write_licenses() { # dest-dir: the license texts of everything linked in
   cp "$TOOL_DIR/sources.lock" "$dest/SOURCES.lock"
 }
 
+# The MinGW-w64 runtime and winpthreads are linked into the Windows DLL; their licenses ask for these notices with
+# binaries. Texts of mingw-w64 v8.0.0, the toolchain in docker/Dockerfile (Ubuntu 22.04).
+MINGW_LICENSES_COMMIT=98dad1fefed2a07ade0b37ca6c610ad66739631a
+MINGW_LICENSES=(
+  "COPYING.MinGW-w64-runtime/COPYING.MinGW-w64-runtime.txt mingw-w64-runtime_license.txt e9b2dc02451ea29092a1f25fa0f3c07207ed421f1807dffb0c4e6dce69dee7bd"
+  "mingw-w64-libraries/winpthreads/COPYING winpthreads_license.txt 63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177"
+)
+
+write_mingw_licenses() { # dest-dir
+  local entry path name sha256
+  for entry in "${MINGW_LICENSES[@]}"; do
+    read -r path name sha256 <<<"$entry"
+    python3 - "https://raw.githubusercontent.com/mingw-w64/mingw-w64/$MINGW_LICENSES_COMMIT/$path" "$1/$name" \
+      "$sha256" <<'PY' || die "could not fetch $path"
+import hashlib, sys, urllib.request
+url, target, expected = sys.argv[1:]
+data = urllib.request.urlopen(url, timeout=60).read()
+if hashlib.sha256(data).hexdigest() != expected:
+    sys.exit(f'{url}: SHA-256 differs from the pinned one')
+open(target, 'wb').write(data)
+PY
+  done
+}
+
 package_macos() { # one universal lib/libffmpegkit.dylib; the build hook thins it to the target architecture
   local name=ffmpegkit-$FFKIT_RELEASE-macos-universal stage
   stage=$FFKIT_HOME/build/$FFKIT_RELEASE/package-macos
@@ -452,6 +476,7 @@ package_zip() { # platform: linux -> lib/libffmpegkit.so, windows -> bin/libffmp
   fi
   cp -R "$kit/include" "$stage/$name/include"
   write_licenses "$stage/$name/licenses"
+  [[ $platform == windows ]] && write_mingw_licenses "$stage/$name/licenses"
   rm -f "$FFKIT_HOME/out/$name.zip"
   (cd "$stage" && zip -qry "$FFKIT_HOME/out/$name.zip" "$name")
   echo "$FFKIT_HOME/out/$name.zip"

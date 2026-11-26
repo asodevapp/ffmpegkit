@@ -38,7 +38,8 @@ machine.
 | GCC runtime (Windows: libstdc++, libgcc, libssp, linked statically) | GPL-3.0 with the GCC Runtime Library Exception, which puts no obligations on the built library |
 
 Every archive carries the license texts of FFmpeg, FFmpegKit and the libraries built from `sources.lock`, and
-`SOURCES.lock` itself, in `licenses/`. The scripts in this repository are
+`SOURCES.lock` itself, in `licenses/`; Windows archives also carry the MinGW-w64 runtime and winpthreads notices
+(mingw-w64 v8.0.0, the toolchain the DLL is built with). The scripts in this repository are
 licensed under the GNU LGPL, version 3 or (at your option) any later version: `LICENSE`, which supplements the
 GNU GPL version 3 in `COPYING`.
 

@@ -1,0 +1,16 @@
+# Sources of the desktop FFmpegKit build. Every source is a git commit: git checks the content against its hash, so a
+# tag moved upstream cannot change the build. Columns: name, repository, commit, then a comment (tag and license).
+#
+# FFmpeg is the master commit ffmpeg-kit-builders v0.10.5 was built from (its fftools copies match this tree).
+ffmpeg            https://github.com/FFmpeg/FFmpeg.git                     8c9502e9b048e21e1cae96477e338ac0635645ba  # master 2026-07-23, LGPL-2.1-or-later
+# The FFmpegKit wrapper (FFmpegKit/ in ffmpeg-kit-builders). The tags differ only in CMake link helpers.
+ffmpegkit-macos   https://github.com/akashskypatel/ffmpeg-kit-builders.git d1dac35212c1f0ebc7ea5243d6f2cdd206c8e3e7  # v0.10.5-macos, LGPL-3.0
+ffmpegkit-linux   https://github.com/akashskypatel/ffmpeg-kit-builders.git c1759c1010791b2f44875cd5964dbed765d5de84  # v0.10.5-linux, LGPL-3.0
+ffmpegkit-windows https://github.com/akashskypatel/ffmpeg-kit-builders.git 19e10f656a4d6e5ac5824f25f7562c2f5123f0ce  # v0.10.5-windows, LGPL-3.0
+# External libraries, the versions ffmpeg-kit-builders v0.10.5 pins.
+zlib              https://github.com/madler/zlib.git                       51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf  # v1.3.1, Zlib
+jsoncpp           https://github.com/open-source-parsers/jsoncpp.git       89e2973c754a9c02a49974d839779b151e95afd6  # 1.9.6, MIT (FFmpegKit media information)
+sdl2              https://github.com/libsdl-org/SDL.git                    98d1f3a45aae568ccd6ed5fec179330f47d4d356  # release-2.32.8, Zlib (FFplay)
+openh264          https://github.com/cisco/openh264.git                    652bdb7719f30b52b08e506645a7322ff1b2cc6f  # v2.6.0, BSD-2-Clause (H.264 encoder)
+kvazaar           https://github.com/ultravideo/kvazaar.git                6040962bed5cc68c5ad01234c38c08b8b2822068  # v2.3.2, BSD-3-Clause (HEVC encoder)
+dav1d             https://code.videolan.org/videolan/dav1d.git             c720f4d3556a01916324aea155555d3efba842e8  # 1.5.2, BSD-2-Clause (AV1 decoder)
